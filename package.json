@@ -1,0 +1,21 @@
+{
+  "name": "graph_ql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node dist/index.js",
+    "dev": "nodemon --exec babel-node src/index.js",
+    "build": "rimraf dist/ && babel ./src --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ashok Dey <ashokdey100@gmail.com> (http://ashokdey.in)",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.18.6",
+    "rimraf": "^2.6.2"
+  }
+}

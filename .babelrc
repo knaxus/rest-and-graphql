@@ -1,0 +1,6 @@
+{
+  "presets": ["env"],
+  "env": {
+    "node": true
+  }
+}
