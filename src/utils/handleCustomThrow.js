@@ -13,7 +13,7 @@ export default function handleCustomThrow(res, error) {
   if (error.code === 404) {
     return sendResponse(res, error.code, {}, error.msg || error.message);
   }
-  if (error.code === 'ER_DUP_ENTRY') {
+  if (error.code === 'ER_DUP_ENTRY' || error.code === 409) {
     return sendResponse(res, 409, {}, error.msg || error.message);
   }
 
