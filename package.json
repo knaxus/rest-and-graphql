@@ -2,7 +2,12 @@
   "name": "graph_ql",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=8.9",
+    "npm": ">=3.10.0"
+  },
+  "engineStrict": true,
   "scripts": {
     "start": "npm run build && node dist/index.js",
     "dev": "nodemon src/index.js --exec \"node -r dotenv/config -r babel-register\"",
