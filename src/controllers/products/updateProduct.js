@@ -24,9 +24,9 @@ export default async function updateProducts(req, res) {
       description,
       price,
     });
-    return sendResponse(res, 200, { product }, 'Fetched products successfully');
+    return sendResponse(res, 200, { product }, 'Updated product details successfully');
   } catch (error) {
-    logger.error('Error creating the product', error);
+    logger.error('Error updating the product', error);
     return handleCustomThrow(res, error);
   }
 }

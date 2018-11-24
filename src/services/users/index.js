@@ -18,10 +18,12 @@ export async function getAllUsersService({ search, limit, offset }) {
   return result[0];
 }
 
-export async function createUsersService({ name, email, address }) {
+export async function createUsersService({
+  name, email, city, imageUrl,
+}) {
   const result = await writePool.query(
-    'INSERT INTO users (name, email, address) VALUES (?, ?, ?)',
-    [name, email, address],
+    'INSERT INTO users (name, email, city, image_url) VALUES (?, ?, ?)',
+    [name, email, city, imageUrl],
   );
   if (!result[0].affectedRows) {
     return {};
@@ -30,12 +32,13 @@ export async function createUsersService({ name, email, address }) {
     userId: result[0].insertId,
     name,
     email,
-    address,
+    city,
+    imageUrl,
   };
 }
 
 export async function updateUsersService({
-  userId, name, email, address,
+  userId, name, email, city, imageUrl,
 }) {
   let updateQuery = 'UPDATE users SET';
   const updates = [];
@@ -51,9 +54,14 @@ export async function updateUsersService({
     updateValues.push(email);
   }
 
-  if (address) {
-    updates.push(' address = ? ');
-    updateValues.push(address);
+  if (city) {
+    updates.push(' city = ? ');
+    updateValues.push(city);
+  }
+
+  if (imageUrl) {
+    updates.push(' image_url = ? ');
+    updateValues.push(imageUrl);
   }
 
   updateQuery = `${updateQuery} ${updates.join()}  WHERE id = ?`;
@@ -62,7 +70,8 @@ export async function updateUsersService({
     userId,
     name,
     email,
-    address,
+    city,
+    imageUrl,
   };
 }
 
