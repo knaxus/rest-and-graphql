@@ -18,6 +18,15 @@ export async function getAllReviewsService({ search, limit, offset }) {
   return result[0];
 }
 
+export async function getResourceDetails({ reviewId }) {
+  const query = 'SELECT * FROM product_reviews WHERE id = ?';
+  const result = await readPool.query(query, [reviewId]);
+  if (result.length) {
+    return result[0][0];
+  }
+  return {};
+}
+
 // TODO: remove userId with the person currently logged in
 export async function createReviewsService({
   userId, productId, title, description,
@@ -54,11 +63,8 @@ export async function updateReviewsService({ reviewId, title, description }) {
 
   updateQuery = `${updateQuery} ${updates.join()}  WHERE id = ?`;
   await writePool.query(updateQuery, [...updateValues, reviewId]);
-  return {
-    reviewId,
-    title,
-    description,
-  };
+  const updatedReview = await getResourceDetails({ reviewId });
+  return updatedReview;
 }
 
 export async function deleteReviewsService({ reviewIdCollection }) {

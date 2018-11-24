@@ -75,13 +75,8 @@ export async function updateSellersService({
 
   updateQuery = `${updateQuery} ${updates.join()}  WHERE id = ?`;
   await writePool.query(updateQuery, [...updateValues, sellerId]);
-  return {
-    sellerId,
-    name,
-    email,
-    city,
-    imageUrl,
-  };
+  const updatedUser = await getResourceDetails({ sellerId });
+  return updatedUser;
 }
 
 export async function deleteSellersService({ sellerIdCollection }) {

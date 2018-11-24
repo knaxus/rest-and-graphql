@@ -18,6 +18,15 @@ export async function getAllUsersService({ search, limit, offset }) {
   return result[0];
 }
 
+export async function getResourceDetails({ userId }) {
+  const query = 'SELECT * FROM users WHERE id = ?';
+  const result = await readPool.query(query, [userId]);
+  if (result.length) {
+    return result[0][0];
+  }
+  return {};
+}
+
 export async function createUsersService({
   name, email, city, imageUrl,
 }) {
@@ -66,13 +75,8 @@ export async function updateUsersService({
 
   updateQuery = `${updateQuery} ${updates.join()}  WHERE id = ?`;
   await writePool.query(updateQuery, [...updateValues, userId]);
-  return {
-    userId,
-    name,
-    email,
-    city,
-    imageUrl,
-  };
+  const updatedUser = await getResourceDetails({ userId });
+  return updatedUser;
 }
 
 export async function deleteUsersService({ userIdCollection }) {

@@ -18,6 +18,15 @@ export async function getAllProductsService({ search, limit, offset }) {
   return result[0];
 }
 
+export async function getResourceDetails({ productId }) {
+  const query = 'SELECT * FROM products WHERE id = ?';
+  const result = await readPool.query(query, [productId]);
+  if (result.length) {
+    return result[0][0];
+  }
+  return {};
+}
+
 export async function createProductsService({ name, description, price }) {
   const result = await writePool.query(
     'INSERT INTO products (name, description, price) VALUES (?, ?, ?)',
@@ -58,12 +67,8 @@ export async function updateProductsService({
 
   updateQuery = `${updateQuery} ${updates.join()}  WHERE id = ?`;
   await writePool.query(updateQuery, [...updateValues, productId]);
-  return {
-    productId,
-    name,
-    price,
-    description,
-  };
+  const updatedProduct = await getResourceDetails({ productId });
+  return updatedProduct;
 }
 
 export async function deleteProductsService({ productIdCollection }) {
