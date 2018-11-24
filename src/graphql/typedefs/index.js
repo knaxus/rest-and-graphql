@@ -6,7 +6,9 @@ export default gql`
   }
   type Query {
     users: [User]
-    name: String
+    sellers: [Seller]
+    products: [Product]
+    reviews: [Review]
   }
   type User {
     id: ID!
@@ -14,6 +16,40 @@ export default gql`
     email: String!
     imageUrl: String
     city: String
-    is_active: Int!
+    isActive: Int!
+    createdAt: String!
+    updatedAt: String!
+    reviews: [Review]
+  }
+  type Seller {
+    id: ID!
+    name: String!
+    email: String!
+    imageUrl: String
+    city: String
+    isActive: Int!
+    createdAt: String!
+    updatedAt: String!
+    products: [Product]
+  }
+  type Product {
+    id: ID!
+    name: String!
+    description: String!
+    price: Float!
+    isActive: Int!
+    createdAt: String!
+    updatedAt: String!
+    seller: Seller
+  }
+  type Review {
+    id: ID!
+    title: String!
+    description: String!
+    user: User!
+    product: Product!
+    isActive: Int!
+    createdAt: String!
+    updatedAt: String!
   }
 `;

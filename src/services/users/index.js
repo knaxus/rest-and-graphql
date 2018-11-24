@@ -1,3 +1,4 @@
+import humps from 'humps';
 import { writePool, readPool } from '../../db/mysql';
 
 export async function getAllUsersService({ search, limit, offset }) {
@@ -15,7 +16,7 @@ export async function getAllUsersService({ search, limit, offset }) {
   }
 
   const result = await readPool.query(getQuery, values);
-  return result[0];
+  return humps.camelizeKeys(result[0]);
 }
 
 // TODO : can be refactored into a common service accepting table name and resourceId
@@ -23,7 +24,7 @@ export async function getResourceDetails({ userId }) {
   const query = 'SELECT * FROM users WHERE id = ?';
   const result = await readPool.query(query, [userId]);
   if (result.length) {
-    return result[0][0];
+    return humps.camelizeKeys(result[0][0]);
   }
   return {};
 }

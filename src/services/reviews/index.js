@@ -1,3 +1,4 @@
+import humps from 'humps';
 import { writePool, readPool } from '../../db/mysql';
 
 export async function getAllReviewsService({ search, limit, offset }) {
@@ -15,7 +16,7 @@ export async function getAllReviewsService({ search, limit, offset }) {
   }
 
   const result = await readPool.query(getQuery, values);
-  return result[0];
+  return humps.camelizeKeys(result[0]);
 }
 
 export async function getResourceDetails({ reviewId }) {
