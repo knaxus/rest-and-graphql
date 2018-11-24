@@ -5,7 +5,7 @@ import { createProductsService } from '../../services/products';
 
 const logger = log4js.getLogger('Products');
 
-export default async function createProducts(req, res) {
+export default async function createResources(req, res) {
   try {
     const errors = validateCreateProduct(req);
     if (errors) {

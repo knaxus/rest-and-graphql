@@ -32,7 +32,7 @@ export async function createReviewsService({
   userId, productId, title, description,
 }) {
   const result = await writePool.query(
-    'INSERT INTO product_reviews (user_id, title, description) VALUES (?, ?, ?)',
+    'INSERT INTO product_reviews (user_id, product_id, title, description) VALUES (?, ?, ?, ?)',
     [userId, productId, title, description],
   );
   if (!result[0].affectedRows) {
@@ -62,6 +62,7 @@ export async function updateReviewsService({ reviewId, title, description }) {
   }
 
   updateQuery = `${updateQuery} ${updates.join()}  WHERE id = ?`;
+  console.log(updateQuery);
   await writePool.query(updateQuery, [...updateValues, reviewId]);
   const updatedReview = await getResourceDetails({ reviewId });
   return updatedReview;

@@ -5,7 +5,7 @@ import { deleteProductsService } from '../../services/products';
 
 const logger = log4js.getLogger('Products');
 
-export default async function updateProducts(req, res) {
+export default async function deleteResources(req, res) {
   try {
     const errors = validateDeleteProduct(req);
     if (errors) {
