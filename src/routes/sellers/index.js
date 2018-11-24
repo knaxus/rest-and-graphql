@@ -14,6 +14,6 @@ sellerRoutes.get('/sellers', getAllSellers);
 sellerRoutes.post('/sellers', createSellers);
 sellerRoutes.delete('/sellers', deleteSellers);
 sellerRoutes.patch('/sellers/:sellerId', updateSellers);
-sellerRoutes.patch('/sellers/:sellerId/products', productsOfSellers);
+sellerRoutes.get('/sellers/:sellerId/products', productsOfSellers);
 
 export default sellerRoutes;

@@ -18,6 +18,15 @@ export async function getAllSellersService({ search, limit, offset }) {
   return result[0];
 }
 
+export async function getResourceDetails({ sellerId }) {
+  const query = 'SELECT * FROM sellers WHERE id = ?';
+  const result = await readPool.query(query, [sellerId]);
+  if (result.length) {
+    return result[0][0];
+  }
+  return {};
+}
+
 export async function createSellersService({
   name, email, city, imageUrl,
 }) {
@@ -81,7 +90,7 @@ export async function deleteSellersService({ sellerIdCollection }) {
 }
 
 export async function getProductsOfSeller({ sellerId, limit, offset }) {
-  let query = 'SELECT p.* FROM products p INNER JOIN products_seller_maping psm ON p.id = psm.peoduct_id WHERE psm.sellerId = ?';
+  let query = 'SELECT p.* FROM products p INNER JOIN products_seller_maping psm ON p.id = psm.product_id WHERE psm.seller_id = ?';
 
   const values = [sellerId];
 
