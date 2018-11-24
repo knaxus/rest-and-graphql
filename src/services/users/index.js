@@ -18,6 +18,7 @@ export async function getAllUsersService({ search, limit, offset }) {
   return result[0];
 }
 
+// TODO : can be refactored into a common service accepting table name and resourceId
 export async function getResourceDetails({ userId }) {
   const query = 'SELECT * FROM users WHERE id = ?';
   const result = await readPool.query(query, [userId]);
