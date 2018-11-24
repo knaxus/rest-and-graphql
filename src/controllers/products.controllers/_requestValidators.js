@@ -13,3 +13,19 @@ export function validateGetAllProducts(req) {
     .optional();
   return req.validationErrors();
 }
+
+export function validateCreateProduct(req) {
+  req
+    .checkBody('name', 'name is required and minimum 2 characters')
+    .isLength({ min: 2 })
+    .exists();
+  req
+    .checkBody('description', 'description should be integer')
+    .isLength({ min: 5 })
+    .optional();
+  req
+    .checkBody('price', 'price is required')
+    .isNumeric()
+    .optional();
+  return req.validationErrors();
+}
