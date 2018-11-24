@@ -62,7 +62,6 @@ export async function updateReviewsService({ reviewId, title, description }) {
   }
 
   updateQuery = `${updateQuery} ${updates.join()}  WHERE id = ?`;
-  console.log(updateQuery);
   await writePool.query(updateQuery, [...updateValues, reviewId]);
   const updatedReview = await getResourceDetails({ reviewId });
   return updatedReview;
