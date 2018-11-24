@@ -1,10 +1,11 @@
 import log4js from 'log4js';
 import { validateGetALlProducts } from './_requestValidators';
-import { sendResponse } from '../../utils';
+import { sendResponse, handleCustomThrow } from '../../utils';
+import { getAllProductsService } from '../../services/products';
 
 const logger = log4js.getLogger('Products');
 
-export async function getAllProducts(req, res) {
+export default async function getAllProducts(req, res) {
   try {
     const errors = validateGetALlProducts(req);
     if (errors) {
@@ -13,6 +14,8 @@ export async function getAllProducts(req, res) {
 
     const { limit = 10, offset = 0, search = '' } = req.query;
     // call service here
+    const list = await getAllProductsService({ search, limit, offset });
+    return sendResponse(res, 200, { list }, 'Fetched products successfully');
   } catch (error) {
     logger.error('Error fetching all the products', error);
     return handleCustomThrow(res, error);

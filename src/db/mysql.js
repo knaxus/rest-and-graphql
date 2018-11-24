@@ -10,18 +10,20 @@ const poolConfig = {
   multipleStatements: true,
   database: process.env.READ_DB_NAME,
   timezone: 'ist',
-  charset: 'utf8mb4'
+  charset: 'utf8mb4',
 };
+
+logger.warn(poolConfig);
 
 const readPool = mysql.createPool(poolConfig);
 const writePool = mysql.createPool(poolConfig);
 
-readPool.on('error', err => {
+readPool.on('error', (err) => {
   logger.error(err);
   throw err;
 });
 
-writePool.on('error', err => {
+writePool.on('error', (err) => {
   logger.error(err);
   throw err;
 });

@@ -3,16 +3,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import expressValidator from 'express-validator';
 import log4js from 'log4js';
-import dotenv from 'dotenv';
-import path from 'path';
-
-// custom modues
+// import custom modules
 import { sendResponse } from './utils';
-
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
-
-const { PORT } = process.env;
-const logger = log4js.getLogger('app');
 
 const app = express();
 app.disable('x-powered-by');
