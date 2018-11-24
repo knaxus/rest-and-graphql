@@ -20,14 +20,14 @@ export default async function updateProducts(req, res) {
       return sendResponse(res, 400, {}, 'Invalid userId');
     }
 
-    const product = await updateUsersService({
+    const user = await updateUsersService({
       userId,
       name,
       email,
       city,
       imageUrl,
     });
-    return sendResponse(res, 200, { product }, 'Updated users successfully');
+    return sendResponse(res, 200, { user }, 'Updated users successfully');
   } catch (error) {
     logger.error('Error updating the user details', error);
     return handleCustomThrow(res, error);

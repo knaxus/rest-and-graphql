@@ -22,7 +22,7 @@ export async function createUsersService({
   name, email, city, imageUrl,
 }) {
   const result = await writePool.query(
-    'INSERT INTO users (name, email, city, image_url) VALUES (?, ?, ?)',
+    'INSERT INTO users (name, email, city, image_url) VALUES (?, ?, ?, ?)',
     [name, email, city, imageUrl],
   );
   if (!result[0].affectedRows) {

@@ -14,13 +14,13 @@ export default async function createProducts(req, res) {
     const {
       name, email, city = '', imageUrl = '',
     } = req.body;
-    const newProduct = await createUsersService({
+    const newUser = await createUsersService({
       name,
       email,
       city,
       imageUrl,
     });
-    return sendResponse(res, 200, { newProduct }, 'Created user successfully');
+    return sendResponse(res, 200, { newUser }, 'Created user successfully');
   } catch (error) {
     logger.error('Error creating user', error);
     return handleCustomThrow(res, error);
