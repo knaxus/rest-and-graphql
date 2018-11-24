@@ -1,4 +1,5 @@
 import { gql } from 'apollo-server-express';
+import resolvers from './resolvers';
 
 export const typeDefs = gql`
   schema {
@@ -10,13 +11,4 @@ export const typeDefs = gql`
   }
 `;
 
-export const resolvers = {
-  Query: {
-    hello() {
-      return 'Hello World';
-    },
-    name() {
-      return 'GraphQL';
-    },
-  },
-};
+export { resolvers };
