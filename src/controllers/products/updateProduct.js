@@ -11,9 +11,13 @@ export default async function updateProducts(req, res) {
     if (errors) {
       return sendResponse(res, 400, {}, errors[0].msg);
     }
-    const {
-      productId, name, description = '', price,
-    } = req.body;
+    const { name, description = '', price } = req.body;
+    const { productId } = req.params;
+
+    if (!productId) {
+      return sendResponse(res, 400, {}, 'Invalid productId');
+    }
+
     const product = await updateProductsService({
       productId,
       name,

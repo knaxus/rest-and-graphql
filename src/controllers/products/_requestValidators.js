@@ -32,10 +32,6 @@ export function validateCreateProduct(req) {
 
 export function validateUpdateProduct(req) {
   req
-    .checkBody('productId', 'productId is required')
-    .isInt()
-    .exists();
-  req
     .checkBody('name', 'name is required and minimum 2 characters')
     .isLength({ min: 2 })
     .exists();

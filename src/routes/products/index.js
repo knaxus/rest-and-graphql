@@ -6,6 +6,6 @@ const productRoutes = Router();
 
 productRoutes.get('/products', getAllProducts);
 productRoutes.post('/products', createProducts);
-productRoutes.patch('/products', updateProducts);
+productRoutes.patch('/products/:productId', updateProducts);
 
 export default productRoutes;
