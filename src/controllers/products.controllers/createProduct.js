@@ -12,8 +12,8 @@ export default async function createProducts(req, res) {
       return sendResponse(res, 400, {}, errors[0].msg);
     }
     const { name, description = '', price } = req.body;
-    const list = await createProductsService({ name, description, price });
-    return sendResponse(res, 200, { list }, 'Fetched products successfully');
+    const newProduct = await createProductsService({ name, description, price });
+    return sendResponse(res, 200, { newProduct }, 'Fetched products successfully');
   } catch (error) {
     logger.error('Error creating the product', error);
     return handleCustomThrow(res, error);
