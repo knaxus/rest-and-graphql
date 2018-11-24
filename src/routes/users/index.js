@@ -4,11 +4,11 @@ import {
   getAllUsers, createUsers, updateUsers, deleteUsers,
 } from '../../controllers/users';
 
-const productRoutes = Router();
+const userRoutes = Router();
 
-productRoutes.get('/users', getAllUsers);
-productRoutes.post('/users', createUsers);
-productRoutes.patch('/users/:userId', updateUsers);
-productRoutes.delete('/users', deleteUsers);
+userRoutes.get('/users', getAllUsers);
+userRoutes.post('/users', createUsers);
+userRoutes.patch('/users/:userId', updateUsers);
+userRoutes.delete('/users', deleteUsers);
 
-export default productRoutes;
+export default userRoutes;
