@@ -1,10 +1,6 @@
 // users routes here
 import { Router } from 'express';
-import {
-  getAllProducts,
-  createProducts,
-  updateProducts,
-} from '../../controllers/products.controllers';
+import { getAllProducts, createProducts, updateProducts } from '../../controllers/products';
 
 const productRoutes = Router();
 
