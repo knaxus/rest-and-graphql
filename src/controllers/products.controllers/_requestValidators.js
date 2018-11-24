@@ -13,7 +13,3 @@ export function validateGetALlProducts(req) {
     .optional();
   return req.validationErrors();
 }
-
-export {
-  validateGetALlProducts,
-}

@@ -1,3 +1,4 @@
 import sendResponse from './sendResponse';
+import handleCustomThrow from './handleCustomThrow';
 
-export { sendResponse };
+export { sendResponse, handleCustomThrow };
