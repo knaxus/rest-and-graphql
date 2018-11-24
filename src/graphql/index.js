@@ -1,14 +1,4 @@
-import { gql } from 'apollo-server-express';
+import typeDefs from './typedefs';
 import resolvers from './resolvers';
 
-export const typeDefs = gql`
-  schema {
-    query: Query
-  }
-  type Query {
-    hello: String
-    name: String
-  }
-`;
-
-export { resolvers };
+export { typeDefs, resolvers };
