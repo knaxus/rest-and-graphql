@@ -3,9 +3,9 @@ import { validateUpdateUsers } from './_requestValidators';
 import { sendResponse, handleCustomThrow } from '../../utils';
 import { updateUsersService } from '../../services/users';
 
-const logger = log4js.getLogger('Products');
+const logger = log4js.getLogger('Users');
 
-export default async function updateProducts(req, res) {
+export default async function uupdateResource(req, res) {
   try {
     const errors = validateUpdateUsers(req);
     if (errors) {
