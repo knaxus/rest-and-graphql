@@ -5,13 +5,15 @@ import {
   createSellers,
   updateSellers,
   deleteSellers,
+  productsOfSellers,
 } from '../../controllers/sellers';
 
 const sellerRoutes = Router();
 
-sellerRoutes.get('/users', getAllSellers);
-sellerRoutes.post('/users', createSellers);
-sellerRoutes.patch('/users/:userId', updateSellers);
-sellerRoutes.delete('/users', deleteSellers);
+sellerRoutes.get('/sellers', getAllSellers);
+sellerRoutes.post('/sellers', createSellers);
+sellerRoutes.delete('/sellers', deleteSellers);
+sellerRoutes.patch('/sellers/:sellerId', updateSellers);
+sellerRoutes.patch('/sellers/:sellerId/products', productsOfSellers);
 
 export default sellerRoutes;

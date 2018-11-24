@@ -61,3 +61,15 @@ export function validateDeleteSellers(req) {
     .exists();
   return req.validationErrors();
 }
+
+export function validateProductsOfSellers(req) {
+  req
+    .checkQuery('limit', 'limit should be integer')
+    .isInt()
+    .optional();
+  req
+    .checkQuery('offset', 'offset should be integer')
+    .isInt()
+    .optional();
+  return req.validationErrors();
+}

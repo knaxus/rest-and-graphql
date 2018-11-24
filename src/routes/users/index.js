@@ -8,7 +8,7 @@ const userRoutes = Router();
 
 userRoutes.get('/users', getAllUsers);
 userRoutes.post('/users', createUsers);
-userRoutes.patch('/users/:userId', updateUsers);
 userRoutes.delete('/users', deleteUsers);
+userRoutes.patch('/users/:userId', updateUsers);
 
 export default userRoutes;

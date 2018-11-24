@@ -79,3 +79,16 @@ export async function deleteSellersService({ sellerIdCollection }) {
   if (!Array.isArray(sellerIdCollection)) return;
   await writePool.query('UPDATE sellers SET is_active = 0 WHERE id IN (?)', [sellerIdCollection]);
 }
+
+export async function getProductsOfSeller({ sellerId, limit, offset }) {
+  let query = 'SELECT p.* FROM products p INNER JOIN products_seller_maping psm ON p.id = psm.peoduct_id WHERE psm.sellerId = ?';
+
+  const values = [sellerId];
+
+  if (limit && offset) {
+    query += ' LIMIT ? OFFSET ?';
+    values.push(parseInt(limit, 10), parseInt(offset, 10));
+  }
+  const result = await readPool.query(query, values);
+  return result[0];
+}
