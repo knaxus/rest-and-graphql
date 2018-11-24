@@ -5,6 +5,7 @@ import expressValidator from 'express-validator';
 import log4js from 'log4js';
 // import custom modules
 import { sendResponse } from './utils';
+import routes from './routes';
 
 const app = express();
 app.disable('x-powered-by');
@@ -20,5 +21,6 @@ app.use(expressValidator());
 app.get('/', (req, res) => {
   sendResponse(res, 200, { message: 'Welcome to Awesome Products' }, 'Request Successful');
 });
+app.use('/', routes);
 
 export default app;

@@ -1,4 +1,4 @@
-export function validateGetALlProducts(req) {
+export function validateGetAllProducts(req) {
   req
     .checkQuery('limit', 'limit should be integer')
     .isInt()
