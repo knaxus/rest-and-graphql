@@ -27,6 +27,7 @@
     "rimraf": "^2.6.2"
   },
   "dependencies": {
+    "apollo-server-express": "^2.2.2",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "dotenv": "^6.1.0",
