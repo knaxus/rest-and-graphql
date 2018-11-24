@@ -84,3 +84,15 @@ export async function deleteUsersService({ userIdCollection }) {
   if (!Array.isArray(userIdCollection)) return;
   await writePool.query('UPDATE users SET is_active = 0 WHERE id IN (?)', [userIdCollection]);
 }
+
+export async function reviewsOfUsers({ userId, limit, offset }) {
+  let query = 'SELECT * FROM product_reviews WHERE user_id =? ';
+  const values = [userId];
+
+  if (limit && offset) {
+    query += ' LIMIT ? OFFSET ?';
+    values.push(parseInt(limit, 10), parseInt(offset, 10));
+  }
+  const result = await readPool.query(query, values);
+  return result[0];
+}
