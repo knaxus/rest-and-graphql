@@ -95,5 +95,5 @@ export async function reviewsOfUsers({ userId, limit, offset }) {
     values.push(parseInt(limit, 10), parseInt(offset, 10));
   }
   const result = await readPool.query(query, values);
-  return result[0];
+  return humps.camelizeKeys(result[0]);
 }

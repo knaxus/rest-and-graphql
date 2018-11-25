@@ -1,12 +1,35 @@
-import { getAllUsersService, getResourceDetails as userDetails } from '../../services/users';
-import { getAllSellersService } from '../../services/sellers';
+import {
+  getAllUsersService,
+  reviewsOfUsers,
+  getResourceDetails as userDetails,
+} from '../../services/users';
+import { getAllSellersService, getProductsOfSeller } from '../../services/sellers';
 import {
   getAllProductsService,
   getResourceDetails as productDetails,
+  getSellerOfProduct,
 } from '../../services/products';
 import { getAllReviewsService } from '../../services/reviews';
 
 export default {
+  User: {
+    async reviews(user) {
+      const reviews = await reviewsOfUsers({ userId: user.id });
+      return reviews;
+    },
+  },
+  Seller: {
+    async products(seller) {
+      const products = await getProductsOfSeller({ sellerId: seller.id });
+      return products;
+    },
+  },
+  Product: {
+    async seller(product) {
+      const seller = await getSellerOfProduct({ productId: product.id });
+      return seller;
+    },
+  },
   Review: {
     async user(review) {
       const user = await userDetails({ userId: review.userId });
