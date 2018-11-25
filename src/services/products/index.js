@@ -10,7 +10,7 @@ export async function getAllProductsService({ search, limit, offset }) {
     values.push(search);
   }
 
-  if (limit && offset) {
+  if (limit && (offset || offset === 0)) {
     getQuery += ' LIMIT ? OFFSET ?';
     values.push(parseInt(limit, 10), parseInt(offset, 10));
   }
@@ -82,7 +82,7 @@ export async function getSellerOfProduct({ productId, limit, offset }) {
 
   const values = [productId];
 
-  if (limit && offset) {
+  if (limit && (offset || offset === 0)) {
     query += ' LIMIT ? OFFSET ?';
     values.push(parseInt(limit, 10), parseInt(offset, 10));
   }

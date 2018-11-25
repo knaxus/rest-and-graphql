@@ -49,8 +49,8 @@ export default {
       const listOfSellers = await getAllSellersService({});
       return listOfSellers;
     },
-    async products() {
-      const listOfProducts = await getAllProductsService({});
+    async products(root, { limit, offset }) {
+      const listOfProducts = await getAllProductsService({ limit, offset });
       return listOfProducts;
     },
     async reviews() {

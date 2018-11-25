@@ -10,7 +10,7 @@ export async function getAllReviewsService({ search, limit, offset }) {
     values.push(search);
   }
 
-  if (limit && offset) {
+  if (limit && (offset || offset === 0)) {
     getQuery += ' LIMIT ? OFFSET ?';
     values.push(parseInt(limit, 10), parseInt(offset, 10));
   }

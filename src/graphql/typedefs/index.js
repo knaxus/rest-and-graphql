@@ -7,7 +7,7 @@ export default gql`
   type Query {
     users: [User]
     sellers: [Seller]
-    products: [Product]
+    products(limit: Int, offset: Int): [Product]
     reviews: [Review]
   }
   type User {

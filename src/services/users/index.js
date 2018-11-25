@@ -10,7 +10,7 @@ export async function getAllUsersService({ search, limit, offset }) {
     values.push(search);
   }
 
-  if (limit && offset) {
+  if (limit && (offset || offset === 0)) {
     getQuery += ' LIMIT ? OFFSET ?';
     values.push(parseInt(limit, 10), parseInt(offset, 10));
   }
@@ -90,7 +90,7 @@ export async function reviewsOfUsers({ userId, limit, offset }) {
   let query = 'SELECT * FROM product_reviews WHERE user_id =? ';
   const values = [userId];
 
-  if (limit && offset) {
+  if (limit && (offset || offset === 0)) {
     query += ' LIMIT ? OFFSET ?';
     values.push(parseInt(limit, 10), parseInt(offset, 10));
   }
