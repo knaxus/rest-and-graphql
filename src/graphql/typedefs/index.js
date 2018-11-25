@@ -5,7 +5,7 @@ export default gql`
     query: Query
   }
   type Query {
-    users(limit: Int, offset: Int): [User]
+    users(limit: Int, offset: Int, name: String): [User]
     sellers(limit: Int, offset: Int): [Seller]
     products(limit: Int, offset: Int): [Product]
     reviews(limit: Int, offset: Int): [Review]

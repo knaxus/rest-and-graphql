@@ -6,8 +6,8 @@ export async function getAllReviewsService({ search, limit, offset }) {
   const values = [];
 
   if (search) {
-    getQuery += ' WHERE pr.title LIKE "%?%" ';
-    values.push(search);
+    getQuery += ` WHERE pr.title LIKE "%${search}%" `;
+    // values.push(search);
   }
 
   if (limit && (offset || offset === 0)) {

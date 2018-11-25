@@ -41,8 +41,8 @@ export default {
     },
   },
   Query: {
-    async users(root, { limit, offset }) {
-      const listOfUsers = await getAllUsersService({ limit, offset });
+    async users(root, { limit, offset, name }) {
+      const listOfUsers = await getAllUsersService({ limit, offset, search: name });
       return listOfUsers;
     },
     async sellers(root, { limit, offset }) {

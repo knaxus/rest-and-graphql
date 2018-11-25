@@ -6,8 +6,8 @@ export async function getAllSellersService({ search, limit, offset }) {
   const values = [];
 
   if (search) {
-    getQuery += ' WHERE s.name LIKE "%?%" ';
-    values.push(search);
+    getQuery += ` WHERE s.name LIKE "%${search}%" `;
+    // values.push(search);
   }
 
   if (limit && (offset || offset === 0)) {

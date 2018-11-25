@@ -6,7 +6,7 @@ export async function getAllProductsService({ search, limit, offset }) {
   const values = [];
 
   if (search) {
-    getQuery += ' WHERE p.name LIKE "%?%" ';
+    getQuery += ` WHERE p.name LIKE "%${search}%" `;
     values.push(search);
   }
 
