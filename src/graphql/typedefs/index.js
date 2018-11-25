@@ -5,10 +5,10 @@ export default gql`
     query: Query
   }
   type Query {
-    users: [User]
-    sellers: [Seller]
+    users(limit: Int, offset: Int): [User]
+    sellers(limit: Int, offset: Int): [Seller]
     products(limit: Int, offset: Int): [Product]
-    reviews: [Review]
+    reviews(limit: Int, offset: Int): [Review]
   }
   type User {
     id: ID!
@@ -30,7 +30,7 @@ export default gql`
     isActive: Int!
     createdAt: String!
     updatedAt: String!
-    products: [Product]
+    products(limit: Int, offset: Int): [Product]
   }
   type Product {
     id: ID!

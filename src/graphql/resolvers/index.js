@@ -19,8 +19,8 @@ export default {
     },
   },
   Seller: {
-    async products(seller) {
-      const products = await getProductsOfSeller({ sellerId: seller.id });
+    async products(seller, { limit, offset }) {
+      const products = await getProductsOfSeller({ sellerId: seller.id, limit, offset });
       return products;
     },
   },
@@ -41,20 +41,20 @@ export default {
     },
   },
   Query: {
-    async users() {
-      const listOfUsers = await getAllUsersService({});
+    async users(root, { limit, offset }) {
+      const listOfUsers = await getAllUsersService({ limit, offset });
       return listOfUsers;
     },
-    async sellers() {
-      const listOfSellers = await getAllSellersService({});
+    async sellers(root, { limit, offset }) {
+      const listOfSellers = await getAllSellersService({ limit, offset });
       return listOfSellers;
     },
     async products(root, { limit, offset }) {
       const listOfProducts = await getAllProductsService({ limit, offset });
       return listOfProducts;
     },
-    async reviews() {
-      const listOfReviews = await getAllReviewsService({});
+    async reviews(root, { limit, offset }) {
+      const listOfReviews = await getAllReviewsService({ limit, offset });
       return listOfReviews;
     },
   },
