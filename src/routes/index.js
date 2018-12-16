@@ -6,9 +6,9 @@ import reviews from './reviews';
 
 const routes = Router();
 
-routes.use('/', products);
-routes.use('/', users);
-routes.use('/', sellers);
-routes.use('/', reviews);
+routes.use('/products', products);
+routes.use('/users', users);
+routes.use('/sellers', sellers);
+routes.use('/reviews', reviews);
 
 export default routes;

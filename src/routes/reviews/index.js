@@ -9,9 +9,9 @@ import {
 
 const reviewRoutes = Router();
 
-reviewRoutes.get('/reviews', getAllReviews);
-reviewRoutes.post('/reviews', createReviews);
-reviewRoutes.delete('/reviews', deleteReviews);
-reviewRoutes.patch('/reviews/:reviewId', updateReviews);
+reviewRoutes.get('/', getAllReviews);
+reviewRoutes.post('/', createReviews);
+reviewRoutes.delete('/', deleteReviews);
+reviewRoutes.patch('/:reviewId', updateReviews);
 
 export default reviewRoutes;

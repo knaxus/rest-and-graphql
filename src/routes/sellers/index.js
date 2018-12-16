@@ -10,10 +10,10 @@ import {
 
 const sellerRoutes = Router();
 
-sellerRoutes.get('/sellers', getAllSellers);
-sellerRoutes.post('/sellers', createSellers);
-sellerRoutes.delete('/sellers', deleteSellers);
-sellerRoutes.patch('/sellers/:sellerId', updateSellers);
-sellerRoutes.get('/sellers/:sellerId/products', productsOfSellers);
+sellerRoutes.get('/', getAllSellers);
+sellerRoutes.post('/', createSellers);
+sellerRoutes.delete('/', deleteSellers);
+sellerRoutes.patch('/:sellerId', updateSellers);
+sellerRoutes.get('/:sellerId/products', productsOfSellers);
 
 export default sellerRoutes;
