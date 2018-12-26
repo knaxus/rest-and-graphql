@@ -1,16 +1,31 @@
-# To run locally
+# GraphQL with Existing REST API
 
-1. clone the repo
-2. cd repo/
-3. npm install
-4. Import .sql file into your mysql, either by command or using any gui tool, For mac, i prefer  "Sequel Pro"
-After this import step, a new database called 'classicmodels' created on your database.
+This repo is the result of my talk on **Client First REST API** at **Social Cops** organised by **[JS Lovers](https://www.meetup.com/jslovers/)**. Find my talk video here: [GraphQL with Node.js and MySQL](https://goo.gl/S2omDE)
 
-5. Create .env file and add
-   * READ_DB_HOST=localhost
-   * READ_DB_PORT=3306
-   * READ_DB_USER=root // your mysql username
-   * READ_DB_PASSWORD=root // your mysql password
-   * READ_DB_NAME=classicmodels
+## Run locally
 
-6. npm run dev
+- Clone the repo
+- `npm install`
+- Setup a `.env` file at the root of the repo
+- `npm run dev`
+
+## Notes
+
+Contents of `.env` file
+
+```env
+PORT=8080
+NODE_ENV = development
+READ_DB_HOST = localhost
+READ_DB_USER = root
+READ_DB_PASSWORD = password
+READ_DB_NAME = awesome_products
+READ_DB_PORT = 3306
+READ_DB_CONNECTION_LIMIT = 10
+WRITE_DB_HOST = localhost
+WRITE_DB_USER = root
+WRITE_DB_PASSWORD = password
+WRITE_DB_NAME = awesome_products
+WRITE_DB_PORT = 3306
+WRITE_DB_CONNECTION_LIMIT = 10
+```
