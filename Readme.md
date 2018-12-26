@@ -11,7 +11,7 @@ This repo is the result of my talk on **Client First REST API** at **Social Cops
 
 ## Notes
 
-Contents of `.env` file
+- Contents of `.env` file
 
 ```env
 PORT=8080
@@ -29,3 +29,7 @@ WRITE_DB_NAME = awesome_products
 WRITE_DB_PORT = 3306
 WRITE_DB_CONNECTION_LIMIT = 10
 ```
+
+- Use the `SQL` file located in `resources` folder to create the database
+
+- Will be updated
