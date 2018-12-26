@@ -42,6 +42,6 @@ export default function sendResponse(res, statusCode, data = {}, message) {
   return res.status(statusCode).json({
     status,
     data,
-    message
+    message,
   });
 }
