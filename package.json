@@ -18,7 +18,7 @@
   "author": "Ashok Dey <ashokdey100@gmail.com> (http://ashokdey.in)",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "@babel/cli": "^7.6.2",
     "babel-preset-env": "^1.7.0",
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
