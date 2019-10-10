@@ -40,7 +40,7 @@ export async function createUsersService({
     return {};
   }
   return {
-    userId: result[0].insertId,
+    id: result[0].insertId,
     name,
     email,
     city,
