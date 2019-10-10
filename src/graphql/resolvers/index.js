@@ -8,8 +8,9 @@ import {
   getAllProductsService,
   getResourceDetails as productDetails,
   getSellerOfProduct,
+  createProductsService,
 } from '../../services/products';
-import { getAllReviewsService } from '../../services/reviews';
+import { getAllReviewsService, createReviewsService } from '../../services/reviews';
 
 export default {
   User: {
@@ -56,6 +57,16 @@ export default {
     async reviews(root, { limit, offset }) {
       const listOfReviews = await getAllReviewsService({ limit, offset });
       return listOfReviews;
+    },
+  },
+  Mutation: {
+    async addProduct(parent, args) {
+      const newProduct = await createProductsService(args);
+      return newProduct;
+    },
+    async addReview(parent, args) {
+      const newReview = await createReviewsService(args);
+      return newReview;
     },
   },
 };

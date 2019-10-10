@@ -40,6 +40,7 @@ export async function createReviewsService({
     return {};
   }
   return {
+    id: result[0].insertId,
     userId,
     productId,
     title,
