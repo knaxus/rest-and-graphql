@@ -37,7 +37,7 @@ export async function createProductsService({ name, description, price }) {
     return {};
   }
   return {
-    productId: result[0].insertId,
+    id: result[0].insertId,
     name,
     description,
     price,

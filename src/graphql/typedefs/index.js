@@ -3,12 +3,19 @@ import { gql } from 'apollo-server-express';
 export default gql`
   schema {
     query: Query
+    mutation: Mutation
   }
   type Query {
     users(limit: Int, offset: Int, name: String): [User]
     sellers(limit: Int, offset: Int): [Seller]
     products(limit: Int, offset: Int): [Product]
     reviews(limit: Int, offset: Int): [Review]
+  }
+  type Mutation {
+    addProduct(name: String,description: String, price:Float): Product
+    addReview(userId: String, productId: String, title: String, description:String): Review
+    addSeller(name:String, email:String, city: String, imageUrl: String) : Seller
+    addUser(name:String, email:String, city: String, imageUrl: String) : User
   }
   type User {
     id: ID!
