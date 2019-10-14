@@ -4,7 +4,7 @@ import {
   getResourceDetails as userDetails,
   createUsersService,
 } from '../../services/users';
-import { getAllSellersService, getProductsOfSeller, createSellersService, updateSellersService } from '../../services/sellers';
+import { getAllSellersService, getProductsOfSeller, createSellersService, updateSellersService, deleteSellersService } from '../../services/sellers';
 import {
   getAllProductsService,
   getResourceDetails as productDetails,
@@ -106,6 +106,13 @@ export default {
       modifiedArgs.sellerId = args.id;
       const updatedSeller = await updateSellersService(modifiedArgs);
       return updatedSeller;
+    },
+    async deleteSeller(parent, args) {
+      const sellerIdCollection = args.id;
+      const deletedSeller = await deleteSellersService(
+        { sellerIdCollection: [sellerIdCollection] },
+      );
+      return deletedSeller;
     },
     async addUser(parent, args) {
       const newUser = await createUsersService(args);
