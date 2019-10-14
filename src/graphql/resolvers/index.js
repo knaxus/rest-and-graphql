@@ -4,6 +4,7 @@ import {
   getResourceDetails as userDetails,
   createUsersService,
   updateUsersService,
+  deleteUsersService,
 } from '../../services/users';
 import { getAllSellersService, getProductsOfSeller, createSellersService, updateSellersService, deleteSellersService } from '../../services/sellers';
 import {
@@ -124,6 +125,13 @@ export default {
       modifiedArgs.userId = args.id;
       const updatedUser = await updateUsersService(modifiedArgs);
       return updatedUser;
+    },
+    async deleteUser(parent, args) {
+      const userIdCollection = args.id;
+      const deletedUser = await deleteUsersService(
+        { userIdCollection: [userIdCollection] },
+      );
+      return deletedUser;
     },
   },
 };
