@@ -22,6 +22,7 @@ export default gql`
     updateSeller(id:ID, name:String, email:String, city: String, imageUrl: String) : Seller
     deleteSeller(id:ID) : Seller
     addUser(name:String, email:String, city: String, imageUrl: String) : User
+    updateUser(id:ID, name:String, email:String, city: String, imageUrl: String) : User
   }
   type User {
     id: ID!

@@ -3,6 +3,7 @@ import {
   reviewsOfUsers,
   getResourceDetails as userDetails,
   createUsersService,
+  updateUsersService,
 } from '../../services/users';
 import { getAllSellersService, getProductsOfSeller, createSellersService, updateSellersService, deleteSellersService } from '../../services/sellers';
 import {
@@ -117,6 +118,12 @@ export default {
     async addUser(parent, args) {
       const newUser = await createUsersService(args);
       return newUser;
+    },
+    async updateUser(parent, args) {
+      const modifiedArgs = args;
+      modifiedArgs.userId = args.id;
+      const updatedUser = await updateUsersService(modifiedArgs);
+      return updatedUser;
     },
   },
 };
