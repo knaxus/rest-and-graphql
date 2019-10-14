@@ -13,7 +13,7 @@ import {
   updateProductsService,
   deleteProductsService,
 } from '../../services/products';
-import { getAllReviewsService, createReviewsService } from '../../services/reviews';
+import { getAllReviewsService, createReviewsService, updateReviewsService } from '../../services/reviews';
 
 export default {
   User: {
@@ -75,12 +75,20 @@ export default {
     },
     async deleteProduct(parent, args) {
       const productIdCollection = args.id;
-      const deletedProduct = await deleteProductsService({ productIdCollection: [productIdCollection] });
+      const deletedProduct = await deleteProductsService(
+        { productIdCollection: [productIdCollection] },
+      );
       return deletedProduct;
     },
     async addReview(parent, args) {
       const newReview = await createReviewsService(args);
       return newReview;
+    },
+    async updateReview(parent, args) {
+      const modifiedArgs = args;
+      modifiedArgs.reviewId = args.id;
+      const updatedReview = await updateReviewsService(modifiedArgs);
+      return updatedReview;
     },
     async addSeller(parent, args) {
       const newSeller = await createSellersService(args);
