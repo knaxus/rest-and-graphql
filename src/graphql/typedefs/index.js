@@ -13,6 +13,7 @@ export default gql`
   }
   type Mutation {
     addProduct(name: String,description: String, price:Float): Product
+    updateProduct(id:ID, name: String,description: String, price:Float): Product
     addReview(userId: String, productId: String, title: String, description:String): Review
     addSeller(name:String, email:String, city: String, imageUrl: String) : Seller
     addUser(name:String, email:String, city: String, imageUrl: String) : User

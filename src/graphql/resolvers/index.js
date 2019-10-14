@@ -2,7 +2,7 @@ import {
   getAllUsersService,
   reviewsOfUsers,
   getResourceDetails as userDetails,
-  createUsersService
+  createUsersService,
 } from '../../services/users';
 import { getAllSellersService, getProductsOfSeller, createSellersService } from '../../services/sellers';
 import {
@@ -10,6 +10,7 @@ import {
   getResourceDetails as productDetails,
   getSellerOfProduct,
   createProductsService,
+  updateProductsService,
 } from '../../services/products';
 import { getAllReviewsService, createReviewsService } from '../../services/reviews';
 
@@ -64,6 +65,12 @@ export default {
     async addProduct(parent, args) {
       const newProduct = await createProductsService(args);
       return newProduct;
+    },
+    async updateProduct(parent, args) {
+      const modifiedArgs = args;
+      modifiedArgs.productId = args.id;
+      const updatedProduct = await updateProductsService(modifiedArgs);
+      return updatedProduct;
     },
     async addReview(parent, args) {
       const newReview = await createReviewsService(args);
