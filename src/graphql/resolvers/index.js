@@ -11,6 +11,7 @@ import {
   getSellerOfProduct,
   createProductsService,
   updateProductsService,
+  deleteProductsService,
 } from '../../services/products';
 import { getAllReviewsService, createReviewsService } from '../../services/reviews';
 
@@ -71,6 +72,11 @@ export default {
       modifiedArgs.productId = args.id;
       const updatedProduct = await updateProductsService(modifiedArgs);
       return updatedProduct;
+    },
+    async deleteProduct(parent, args) {
+      const productIdCollection = args.id;
+      const deletedProduct = await deleteProductsService({ productIdCollection: [productIdCollection] });
+      return deletedProduct;
     },
     async addReview(parent, args) {
       const newReview = await createReviewsService(args);
