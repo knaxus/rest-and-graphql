@@ -19,6 +19,7 @@ export default gql`
     updateReview(id:ID, userId: String, productId: String, title: String, description:String): Review
     deleteReview(id:ID) : Review
     addSeller(name:String, email:String, city: String, imageUrl: String) : Seller
+    updateSeller(id:ID, name:String, email:String, city: String, imageUrl: String) : Seller
     addUser(name:String, email:String, city: String, imageUrl: String) : User
   }
   type User {
