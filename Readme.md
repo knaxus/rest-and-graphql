@@ -1,10 +1,16 @@
-# GraphQL with Existing REST API
+# Scalable API Architecture
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bef9e90ff8d340a58bd307db645ce715)](https://app.codacy.com/app/ashokdey/rest-and-graphql?utm_source=github.com&utm_medium=referral&utm_content=knaxus/rest-and-graphql&utm_campaign=Badge_Grade_Dashboard)
 
-This repository contains both REST & GraphQL API.
+This repository is a demostration of highly scalable & easily maintainable codebase architecture for both **REST & GraphQL API** interface.
 
 ![Banner](./__assets/banner.png)
+
+## Tech Stack
+
+- Node.js
+- GraphQL
+- MySQL
 
 ## Run locally
 
