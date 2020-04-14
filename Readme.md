@@ -2,7 +2,9 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bef9e90ff8d340a58bd307db645ce715)](https://app.codacy.com/app/ashokdey/rest-and-graphql?utm_source=github.com&utm_medium=referral&utm_content=knaxus/rest-and-graphql&utm_campaign=Badge_Grade_Dashboard)
 
-This repo is the result of my talk on **Client First REST API** at **Social Cops** organised by **[JS Lovers](https://www.meetup.com/jslovers/)**. Find my talk video here: [GraphQL with Node.js and MySQL](https://goo.gl/S2omDE)
+This repository contains both REST & GraphQL API.
+
+[Banner](./__assets/banner.png)
 
 ## Run locally
 
