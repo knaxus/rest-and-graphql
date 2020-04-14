@@ -21,17 +21,34 @@ export default gql`
     addSeller(name:String, email:String, city: String, imageUrl: String) : Seller
     updateSeller(id:ID, name:String, email:String, city: String, imageUrl: String) : Seller
     deleteSeller(id:ID) : Seller
-    addUser(name:String, email:String, city: String, imageUrl: String) : User
-    updateUser(id:ID, name:String, email:String, city: String, imageUrl: String) : User
+    addUser(data: AddUserDetailsInput) : User
+    updateUser(id:ID, data: UpdateUserDetailsInput) : User
     deleteUser(id:ID) : User
   }
+
+  input AddUserDetailsInput {
+    name:String!
+    email:String!
+    city: String
+    imageUrl: String
+    isActive: Int
+  }
+
+  input UpdateUserDetailsInput {
+    name:String
+    email:String
+    city: String
+    imageUrl: String
+    isActive: Int
+  }
+
   type User {
     id: ID!
     name: String!
     email: String!
     imageUrl: String
     city: String
-    isActive: Int!
+    isActive: Int
     createdAt: String!
     updatedAt: String!
     reviews: [Review]

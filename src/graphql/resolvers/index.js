@@ -1,5 +1,5 @@
 
-import Mutation from './Mutation';
+import Mutation from './Mutations';
 import Query from './Query';
 import Product from './Product';
 import Seller from './Seller';
