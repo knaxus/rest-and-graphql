@@ -12,12 +12,25 @@ This repository is a demostration of highly scalable & easily maintainable codeb
 - GraphQL
 - MySQL
 
+## Work Progress
+
+- Upcoming APIs in this repo
+  - User Registration
+  - ACL
+  - Admin Portal
+  - Seller Portal
+- Unit Testing
+  - REST endpoints
+  - GraphQL endpoints
+- CI and CD
+
 ## Run locally
 
 - Clone the repo
 - `npm install`
 - Setup a `.env` file at the root of the repo
 - `npm run dev`
+- GraphQL endpoint will be http://localhost:PORT/graphql
 
 ## Notes
 
@@ -41,5 +54,3 @@ WRITE_DB_CONNECTION_LIMIT = 10
 ```
 
 - Use the `SQL` file located in `resources` folder to create the database
-
-- Will be updated
