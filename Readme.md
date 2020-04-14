@@ -1,8 +1,28 @@
-# GraphQL with Existing REST API
+# Scalable API Architecture
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bef9e90ff8d340a58bd307db645ce715)](https://app.codacy.com/app/ashokdey/rest-and-graphql?utm_source=github.com&utm_medium=referral&utm_content=knaxus/rest-and-graphql&utm_campaign=Badge_Grade_Dashboard)
 
-This repo is the result of my talk on **Client First REST API** at **Social Cops** organised by **[JS Lovers](https://www.meetup.com/jslovers/)**. Find my talk video here: [GraphQL with Node.js and MySQL](https://goo.gl/S2omDE)
+This repository is a demostration of highly scalable & easily maintainable codebase architecture for both **REST & GraphQL API** interface.
+
+![Banner](./__assets/banner.png)
+
+## Tech Stack
+
+- Node.js
+- GraphQL
+- MySQL
+
+## Work Progress
+
+- Upcoming APIs in this repo
+  - User Registration
+  - ACL
+  - Admin Portal
+  - Seller Portal
+- Unit Testing
+  - REST endpoints
+  - GraphQL endpoints
+- CI and CD
 
 ## Run locally
 
@@ -10,6 +30,7 @@ This repo is the result of my talk on **Client First REST API** at **Social Cops
 - `npm install`
 - Setup a `.env` file at the root of the repo
 - `npm run dev`
+- GraphQL endpoint will be http://localhost:PORT/graphql
 
 ## Notes
 
@@ -33,5 +54,3 @@ WRITE_DB_CONNECTION_LIMIT = 10
 ```
 
 - Use the `SQL` file located in `resources` folder to create the database
-
-- Will be updated

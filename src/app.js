@@ -22,9 +22,9 @@ app.use(expressValidator());
 
 // root route
 app.get('/', (req, res) => {
-  sendResponse(res, 200, { message: 'Welcome to Awesome Products' }, 'Request Successful');
+  sendResponse(res, 200, { message: 'Welcome to Awesome Products' }, 'Successful');
 });
-app.use('/', routes);
+app.use('/api/v1', routes);
 
 const server = new ApolloServer({ typeDefs, resolvers });
 server.applyMiddleware({ app });

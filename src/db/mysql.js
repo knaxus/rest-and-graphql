@@ -9,7 +9,6 @@ const poolConfig = {
   password: process.env.READ_DB_PASSWORD,
   multipleStatements: true,
   database: process.env.READ_DB_NAME,
-  timezone: 'ist',
   charset: 'utf8mb4',
 };
 
