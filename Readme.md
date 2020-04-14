@@ -4,7 +4,7 @@
 
 This repository contains both REST & GraphQL API.
 
-[Banner](./__assets/banner.png)
+![Banner](./__assets/banner.png)
 
 ## Run locally
 
