@@ -29,7 +29,7 @@ export default gql`
   input AddUserDetailsInput {
     name:String!
     email:String!
-    city: String
+    password: String!
     imageUrl: String
     isActive: Int
   }
@@ -47,7 +47,6 @@ export default gql`
     name: String!
     email: String!
     imageUrl: String
-    city: String
     isActive: Int
     createdAt: String!
     updatedAt: String!
