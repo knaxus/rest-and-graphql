@@ -11,15 +11,8 @@ export default async function createResource(req, res) {
     if (errors) {
       return sendResponse(res, 400, {}, errors[0].msg);
     }
-    const {
-      name, email, city = '', imageUrl = '',
-    } = req.body;
-    const newUser = await createUsersService({
-      name,
-      email,
-      city,
-      imageUrl,
-    });
+
+    const newUser = await createUsersService(req.body);
     return sendResponse(res, 200, { newUser }, 'Created user successfully');
   } catch (error) {
     logger.error('Error creating user', error);

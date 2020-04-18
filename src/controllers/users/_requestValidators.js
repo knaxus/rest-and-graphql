@@ -1,3 +1,5 @@
+import { isValidIndianMobile, isValidFullName } from '../../utils/index';
+
 export function validateGetAllUsers(req) {
   req
     .checkQuery('limit', 'limit should be integer')
@@ -17,20 +19,24 @@ export function validateGetAllUsers(req) {
 export function validateCreateUsers(req) {
   req
     .checkBody('name', 'name is required and minimum 2 characters')
-    .isLength({ min: 2 })
+    .custom((v) => isValidFullName(v))
     .exists();
   req
-    .checkBody('email', 'email should be integer')
+    .checkBody('email', 'Invalid Email')
+    .isEmail()
+    .exists();
+  req
+    .checkBody('password', 'Invalid Password/Minimum 5 chars are required')
     .isLength({ min: 5 })
     .exists();
   req
-    .checkBody('imageUrl', 'imageUrl should be integer')
+    .checkBody('imageUrl', 'Invalid Image URL')
     .isLength({ min: 5 })
     .optional();
   req
-    .checkBody('city', 'city is required')
-    .isLength({ min: 3 })
-    .optional();
+    .checkBody('mobile', 'Mobile number is required/invalid')
+    .custom((v) => isValidIndianMobile(v))
+    .exists();
   return req.validationErrors();
 }
 
@@ -57,7 +63,7 @@ export function validateUpdateUsers(req) {
 export function validateDeleteUsers(req) {
   req
     .checkBody('userIdCollection', 'userIdCollection is required')
-    .custom(arr => Array.isArray(arr))
+    .custom((arr) => Array.isArray(arr))
     .exists();
   return req.validationErrors();
 }

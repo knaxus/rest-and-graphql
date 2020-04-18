@@ -1,4 +1,6 @@
 import humps from 'humps';
+import bcrypt from 'bcrypt';
+
 import { writePool, readPool } from '../../db/mysql';
 
 export async function getAllUsersService({ search, limit, offset }) {
@@ -30,20 +32,31 @@ export async function getResourceDetails({ userId }) {
 }
 
 export async function createUsersService({
-  name, email, city, imageUrl,
+  name, email, mobile, imageUrl = '', password,
 }) {
+  // hash the password
+  const hash = await bcrypt.hash(password, 10);
+
   const result = await writePool.query(
-    'INSERT INTO users (name, email, city, image_url) VALUES (?, ?, ?, ?)',
-    [name, email, city, imageUrl],
+    'INSERT INTO users (name, email, mobile, image_url) VALUES (?, ?, ?, ?)',
+    [name, email, mobile, imageUrl],
   );
   if (!result[0].affectedRows) {
     return {};
   }
+
+  const userId = result[0].insertId;
+
+  await writePool.query(
+    'INSERT INTO users_details (user_id, password) VALUES (?, ?)',
+    [userId, hash],
+  );
+
   return {
-    id: result[0].insertId,
+    id: userId,
     name,
     email,
-    city,
+    mobile,
     imageUrl,
   };
 }
