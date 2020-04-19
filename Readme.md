@@ -51,6 +51,13 @@ WRITE_DB_PASSWORD = password
 WRITE_DB_NAME = awesome_products
 WRITE_DB_PORT = 3306
 WRITE_DB_CONNECTION_LIMIT = 10
+# tokens
+TOKEN_SECRET = !@
+ACCESS_TOKEN_EXPIRY = 1d
+ACCESS_TOKEN_ALGO = HS256
+REFRESH_TOKEN_SECRET = !@!
+REFRESH_TOKEN_EXPIRY = 15d
+REFRESH_TOKEN_ALGO = HS256
 ```
 
 - Use the `SQL` file located in `resources` folder to create the database
