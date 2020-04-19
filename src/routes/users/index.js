@@ -6,10 +6,12 @@ import {
   updateUsers,
   deleteUsers,
   reviewsOfUser,
+  loginUser,
 } from '../../controllers/users';
 
 const userRoutes = Router();
 
+userRoutes.post('/users/login', loginUser);
 userRoutes.get('/users', getAllUsers);
 userRoutes.post('/users', createUsers);
 userRoutes.delete('/users', deleteUsers);

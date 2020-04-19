@@ -2,6 +2,7 @@ import humps from 'humps';
 import bcrypt from 'bcrypt';
 
 import { writePool, readPool } from '../../db/mysql';
+import { jwt } from '../../utils';
 
 export async function getAllUsersService({ search, limit, offset }) {
   let getQuery = 'SELECT * FROM users u';
@@ -52,13 +53,15 @@ export async function createUsersService({
     [userId, hash],
   );
 
-  return {
+  const user = {
     id: userId,
     name,
     email,
     mobile,
     imageUrl,
   };
+
+  return { user };
 }
 
 export async function updateUsersService({
@@ -104,4 +107,33 @@ export async function reviewsOfUsers({ userId, limit, offset }) {
   }
   const result = await readPool.query(query, values);
   return humps.camelizeKeys(result[0]);
+}
+
+export async function loginUserService({ email, password }) {
+  const invalidLoginError = new Error('Invalid Credentials');
+  invalidLoginError.code = 404;
+
+  const [userRows] = await readPool.query('SELECT u.id, u.mobile, u.email, ud.password FROM users u INNER JOIN users_details ud ON u.id = ud.user_id WHERE u.email = ?', [email]);
+
+  if (!userRows.length) {
+    throw invalidLoginError;
+  }
+
+  const hash = userRows[0].password;
+  const compare = await bcrypt.compare(password, hash);
+
+  if (!compare) {
+    throw invalidLoginError;
+  }
+
+  const userId = userRows[0].id;
+
+  const token = jwt.createAccessToken({ userId });
+
+  const user = {
+    id: userId,
+    email: userRows[0].email,
+  };
+
+  return { user, token };
 }

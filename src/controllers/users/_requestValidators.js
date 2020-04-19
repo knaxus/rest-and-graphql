@@ -46,8 +46,8 @@ export function validateUpdateUsers(req) {
     .isLength({ min: 2 })
     .exists();
   req
-    .checkBody('email', 'email should be integer')
-    .isLength({ min: 5 })
+    .checkBody('email', 'Invalid Email')
+    .isEmail()
     .exists();
   req
     .checkBody('imageUrl', 'imageUrl should be integer')
@@ -64,6 +64,18 @@ export function validateDeleteUsers(req) {
   req
     .checkBody('userIdCollection', 'userIdCollection is required')
     .custom((arr) => Array.isArray(arr))
+    .exists();
+  return req.validationErrors();
+}
+
+export function validateLoginUsers(req) {
+  req
+    .checkBody('email', 'Invalid Email')
+    .isEmail()
+    .exists();
+  req
+    .checkBody('password', 'Invalid Password/Minimum 5 chars are required')
+    .isLength({ min: 5 })
     .exists();
   return req.validationErrors();
 }

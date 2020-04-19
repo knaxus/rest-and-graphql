@@ -22,18 +22,18 @@ const refreshTokenConfig = {
 export default {
 
   createAccessToken(data) {
-    JWT.sign(data, TOKEN_SECRET, accessTokenConfig);
+    return JWT.sign(data, TOKEN_SECRET, accessTokenConfig);
   },
 
   decryptAccessToken(token) {
-    JWT.decode(token, TOKEN_SECRET, accessTokenConfig);
+    return JWT.decode(token, TOKEN_SECRET, accessTokenConfig);
   },
 
   createaRefreshToken(data) {
-    JWT.sign(data, REFRESH_TOKEN_SECRET, refreshTokenConfig);
+    return JWT.sign(data, REFRESH_TOKEN_SECRET, refreshTokenConfig);
   },
 
   decryptRefreshToken(token) {
-    JWT.decode(token, REFRESH_TOKEN_SECRET, refreshTokenConfig);
+    return JWT.decode(token, REFRESH_TOKEN_SECRET, refreshTokenConfig);
   },
 };
