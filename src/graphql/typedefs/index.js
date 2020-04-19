@@ -37,7 +37,6 @@ export default gql`
   input UpdateUserDetailsInput {
     name:String
     email:String
-    city: String
     imageUrl: String
     isActive: Int
   }

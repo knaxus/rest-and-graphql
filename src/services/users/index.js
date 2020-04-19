@@ -62,7 +62,7 @@ export async function createUsersService({
 }
 
 export async function updateUsersService({
-  userId, name, email, city, imageUrl,
+  userId, name, email, imageUrl,
 }) {
   let updateQuery = 'UPDATE users SET';
   const updates = [];
@@ -76,11 +76,6 @@ export async function updateUsersService({
   if (email) {
     updates.push(' email = ? ');
     updateValues.push(email);
-  }
-
-  if (city) {
-    updates.push(' city = ? ');
-    updateValues.push(city);
   }
 
   if (imageUrl) {
